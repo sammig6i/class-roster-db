@@ -25,7 +25,7 @@ class Student {
     std::string getLastName() const;
     std::string getEmailAddress() const;
     int getAge() const;
-    int* getDaysToCompleteCourses();
+    int* getDaysToCompleteCourses() const;
     DegreeProgram getDegreeProgram() const;
 
     // setter functions for each variable
@@ -56,7 +56,7 @@ class Student {
     int Student::getAge() const {
         return age;
     }
-    int* Student::getDaysToCompleteCourses() const {
+    int* Student::getDaysToCompleteCourses() {
         return daysToCompleteCourses;
     }
     DegreeProgram Student::getDegreeProgram() const {
@@ -95,7 +95,7 @@ class Student {
         std::cout << "Email Address: " << getEmailAddress() << std::endl;
         std::cout << "Age: " << getAge() << std::endl;
         std::cout << "Days to Complete Courses: ";
-        int* days = getDaysToCompleteCourses();
+        const int* days = getDaysToCompleteCourses();
         for (int i = 0; i < 3; i++) {
             std::cout << days[i] << " ";
         }
