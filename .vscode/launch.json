@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "configurations": [
+    {
+      "name": "C++ Launch",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/roster",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "lldb",
+      "preLaunchTask": "make",
+      "internalConsoleOptions": "openOnSessionStart"
+    }
+  ]
+}

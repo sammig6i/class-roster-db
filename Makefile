@@ -10,7 +10,7 @@ SRCS        := $(SRCS:%=$(SRC_DIR)/%)
 OBJS        := $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 CC          := g++
-CFLAGS      := -Wall -Wextra -Werror -std=c++11
+CFLAGS      := -Wall -Wextra -Werror -std=c++11 -g
 CPPFLAGS    := -I include
 
 RM          := rm -f
