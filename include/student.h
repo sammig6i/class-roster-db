@@ -19,6 +19,7 @@ class Student {
    public:
     // Constructor
     Student(std::string studentID, std::string firstName, std::string lastName, std::string emailAddress, int age, std::array<int, 3> daysToCompleteCourses, DegreeProgram degreeProgram);
+
     // getter functions for each variable
     std::string getStudentID() const;
     std::string getFirstName() const;

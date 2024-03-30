@@ -13,9 +13,5 @@ const std::string studentData[] =
      "A5,Sammi,Ghazzawi,sghazza@wgu.edu,26,10,45,50,NETWORK"};
 
 int main() {
-    Student student("A1", "John", "Smith", "John1989@gmail.com", 20, {34, 34, 35}, DegreeProgram::NETWORK);
-    student.print();
-    student.setDaysToCompleteCourses({45, 64, 64});
-    student.print();
-    return 0;
+        return 0;
 }
