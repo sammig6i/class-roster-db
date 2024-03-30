@@ -2,6 +2,7 @@
 #include <string>
 
 #include "degree.h"
+#include "roster.h"
 #include "student.h"
 
 // student data table
