@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <sstream>
 #include <string>
 
 #include "degree.h"
@@ -14,5 +15,18 @@ const std::string studentData[] =
      "A5,Sammi,Ghazzawi,sghazza@wgu.edu,26,10,45,50,NETWORK"};
 
 int main() {
-        return 0;
+    std::vector<std::string> studentDataTable;
+    // TODO parse each row of data in studentData to create each variable instance in Student class
+    for (const std::string& studentString : studentData) {
+        for (char c : studentString) {
+            if (c != ',') {
+                std::stringstream ss;
+                ss << c;
+                std::string str = ss.str();
+                studentDataTable.push_back(str);
+            }
+        }
+    }
+
+    return 0;
 }
