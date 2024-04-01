@@ -71,6 +71,7 @@
     "utility": "cpp",
     "format": "cpp",
     "cinttypes": "cpp",
-    "deque": "cpp"
+    "deque": "cpp",
+    "iostream": "cpp"
   }
 }

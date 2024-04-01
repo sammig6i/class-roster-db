@@ -16,39 +16,47 @@ const vector<string> studentData =
      "A5,Sammi,Ghazzawi,sghazza@wgu.edu,26,10,45,50,NETWORK"};
 
 int main() {
-    vector<vector<string>> results;
+    vector<Student*> students;
+    Roster roster(studentData.size());
 
-    // TODO parse each row of data in studentData to create a variable instance for each object in Student class
+    // parse data from studentData table
     for (const auto& student : studentData) {
         stringstream ss(student);
+        string token;
         vector<string> result;
 
-        string token;
-        for (int i = 0; i < 9; i++) {
-            getline(ss, token, ',');
-            if (i >= 4 && i <= 7) {
-                if (i == 5) {
-                    token = "{" + token;
-                } else if (i == 7) {
-                    token = token + "}";
-                } else if (i == 4) {
-                    token = to_string(stoi(token));
-                }
-            }
+        while (getline(ss, token, ',')) {
             result.push_back(token);
         }
 
-        results.push_back(result);
+        string studentID = result[0];
+        string firstName = result[1];
+        string lastName = result[2];
+        string emailAddress = result[3];
+        int age = stoi(result[4]);
+        array<int, 3> daysToCompleteCourses = {stoi(result[5]),
+                                               stoi(result[6]),
+                                               stoi(result[7])};
+        DegreeProgram degreeProgram = NONE;
+        if (result[8] == "SECURITY") {
+            degreeProgram = SECURITY;
+        } else if (result[8] == "SOFTWARE") {
+            degreeProgram = SOFTWARE;
+        } else if (result[8] == "NETWORK") {
+            degreeProgram = NETWORK;
+        } else {
+            cerr << "Invalid degree program: " << result[8] << endl;
+        }
+
+        Student* newStudent = new Student(studentID, firstName, lastName, emailAddress, age, daysToCompleteCourses, degreeProgram);
+        students.push_back(newStudent);
     }
 
-    for
+    for (const auto& studentPtr : students) {
+        roster.addStudent(studentPtr);
+    }
 
-        for (const auto& row : results) {
-            for (const auto& field : row) {
-                cout << field << ", ";
-            }
-            cout << endl;
-        }
+    roster.printAvgDaysInCourse("A1");
 
     return 0;
 }
