@@ -36,7 +36,7 @@
 <h3 align="center">Database for Class Roster</h3>
 
   <p align="center">
-    project_description
+    An implementation of the class roster database for WGU C++ class.
     <br />
     <a href="https://github.com/sammig6i/class-roster-db"><strong>Explore the docs »</strong></a>
     <br />
