@@ -43,9 +43,9 @@ void Roster::printAll() {
         std::cout << student->getStudentID()
                   << "\tFirst Name: " << student->getFirstName()
                   << "\tLast Name: " << student->getLastName()
-                  << "\tEmailAddress: " << student->getEmailAddress()
+                  << "\tEmail Address: " << student->getEmailAddress()
                   << "\tAge: " << student->getAge()
-                  << "\ndaysToCompleteCourses: {" << student->getDaysToCompleteCourses()[0] << ", " << student->getDaysToCompleteCourses()[1] << ", " << student->getDaysToCompleteCourses()[2]
+                  << "\nDays To Complete Courses: {" << student->getDaysToCompleteCourses()[0] << ", " << student->getDaysToCompleteCourses()[1] << ", " << student->getDaysToCompleteCourses()[2]
                   << "}\tDegree Program: ";
         switch (student->getDegreeProgram()) {
             case SECURITY:
@@ -67,9 +67,13 @@ void Roster::printAll() {
 void Roster::printAvgDaysInCourse(const std::string& studentID) {
     for (auto it = classRosterArray.begin(); it != classRosterArray.end(); it++) {
         if ((*it)->getStudentID() == studentID) {
-            int* daysPtr = (*it)->getDaysToCompleteCourses();
-            std::array<int, 3> daysArray = {daysPtr[0], daysPtr[1], daysPtr[2]};
-            double avgDaysInCourse = (daysArray[0] + daysArray[1] + daysArray[2]) / 3.0;
+            std::array<int, 3> days = (*it)->getDaysToCompleteCourses();
+
+            int sum = 0;
+            for (size_t i = 0; i < days.size(); i++) {
+                sum += days[i];
+            }
+            double avgDaysInCourse = sum / 3.0;
 
             std::cout << "Average days to complete courses for student ID " << studentID << ": " << avgDaysInCourse << std::endl;
             return;
@@ -78,7 +82,60 @@ void Roster::printAvgDaysInCourse(const std::string& studentID) {
     std::cerr << "Student ID " << studentID << " not found." << std::endl;
 }
 void Roster::printInvalidEmails() {
-  
+    for (auto it = classRosterArray.begin(); it != classRosterArray.end(); it++) {
+        std::string email = (*it)->getEmailAddress();
+        if (email.empty()) {
+            std::cout << "Student ID " << (*it)->getStudentID() << "does not have an email." << std::endl;
+        } else {
+            bool hasAtSymbol = false;
+            bool hasDot = false;
+            bool hasSpace = false;
+
+            for (char c : email) {
+                if (c == '@') {
+                    hasAtSymbol = true;
+                } else if (c == '.') {
+                    hasDot = true;
+                } else if (c == ' ') {
+                    hasSpace = true;
+                }
+            }
+
+            if (!hasAtSymbol || !hasDot || hasSpace) {
+                std::cout << "Student ID " << (*it)->getStudentID() << " has an invalid email address: " << (*it)->getEmailAddress() << std::endl;
+            }
+        }
+    }
 }
-// void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
-// }
+
+void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
+    std::string programString;
+    switch (degreeProgram) {
+        case SECURITY:
+            programString = "Security";
+            break;
+        case NETWORK:
+            programString = "Network";
+            break;
+        case SOFTWARE:
+            programString = "Software";
+            break;
+        default:
+            programString = "None";
+            break;
+    }
+
+    bool found = false;
+    for (auto it = classRosterArray.begin(); it != classRosterArray.end(); it++) {
+        if ((*it)->getDegreeProgram() == degreeProgram) {
+            (*it)->print();
+            found = true;
+        } else {
+            continue;
+        }
+        std::cout << std::endl;
+    }
+    if (!found) {
+        std::cerr << "No students are in the " << programString << " program." << std::endl;
+    }
+}

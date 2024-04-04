@@ -72,6 +72,9 @@
     "format": "cpp",
     "cinttypes": "cpp",
     "deque": "cpp",
-    "iostream": "cpp"
+    "iostream": "cpp",
+    "mutex": "cpp",
+    "thread": "cpp",
+    "stack": "cpp"
   }
 }

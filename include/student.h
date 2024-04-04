@@ -13,7 +13,7 @@ class Student {
     std::string lastName;
     std::string emailAddress;
     int age;
-    int daysToCompleteCourses[3];
+    std::array<int, 3> daysToCompleteCourses;
     DegreeProgram degreeProgram;
 
    public:
@@ -26,7 +26,7 @@ class Student {
     std::string getLastName() const;
     std::string getEmailAddress() const;
     int getAge() const;
-    int* getDaysToCompleteCourses();
+    std::array<int, 3>& getDaysToCompleteCourses();
     DegreeProgram getDegreeProgram() const;
 
     // setter functions for each variable

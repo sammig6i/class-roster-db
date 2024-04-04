@@ -7,9 +7,7 @@ Student::Student(std::string studentID, std::string firstName, std::string lastN
     this->lastName = lastName;
     this->emailAddress = emailAddress;
     this->age = age;
-    for (int i = 0; i < 3; ++i) {
-        this->daysToCompleteCourses[i] = daysToCompleteCourses[i];
-    }
+    this->daysToCompleteCourses = daysToCompleteCourses;
     this->degreeProgram = degreeProgram;
 }
 
@@ -29,7 +27,7 @@ std::string Student::getEmailAddress() const {
 int Student::getAge() const {
     return age;
 }
-int* Student::getDaysToCompleteCourses() {
+std::array<int, 3>& Student::getDaysToCompleteCourses() {
     return daysToCompleteCourses;
 }
 DegreeProgram Student::getDegreeProgram() const {
@@ -53,7 +51,7 @@ void Student::setAge(int age) {
     this->age = age;
 }
 void Student::setDaysToCompleteCourses(std::array<int, 3> daysToCompleteCourses) {
-    for (int i = 0; i < 3; i++) {
+    for (size_t i = 0; i < daysToCompleteCourses.size(); i++) {
         this->daysToCompleteCourses[i] = daysToCompleteCourses[i];
     }
 }
@@ -67,12 +65,12 @@ void Student::print() {
     std::cout << "Last Name: " << getLastName() << std::endl;
     std::cout << "Email Address: " << getEmailAddress() << std::endl;
     std::cout << "Age: " << getAge() << std::endl;
-    std::cout << "Days to Complete Courses: ";
-    int* days = getDaysToCompleteCourses();
-    for (int i = 0; i < 3; i++) {
-        std::cout << days[i] << " ";
+    std::cout << "Days to Complete Courses: {";
+    auto days = getDaysToCompleteCourses();
+    for (const auto& day : days) {
+        std::cout << day << " ";
     }
-    std::cout << std::endl;
+    std::cout << "}" << std::endl;
     std::cout << "Degree Program: ";
     switch (getDegreeProgram()) {
         case SECURITY:
@@ -83,6 +81,9 @@ void Student::print() {
             break;
         case SOFTWARE:
             std::cout << "SOFTWARE";
+            break;
+        default:
+            std::cout << "NONE";
             break;
     }
     std::cout << std::endl;

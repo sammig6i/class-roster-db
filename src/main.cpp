@@ -15,11 +15,10 @@ const vector<string> studentData =
      "A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
      "A5,Sammi,Ghazzawi,sghazza@wgu.edu,26,10,45,50,NETWORK"};
 
-int main() {
+// parse Student Data table
+vector<Student*> parseStudentData(const vector<string>& studentData) {
     vector<Student*> students;
-    Roster roster(studentData.size());
 
-    // parse data from studentData table
     for (const auto& student : studentData) {
         stringstream ss(student);
         string token;
@@ -52,11 +51,23 @@ int main() {
         students.push_back(newStudent);
     }
 
+    return students;
+}
+
+Roster addToRoster(const vector<Student*> students) {
+    Roster classRoster(students.size());
     for (const auto& studentPtr : students) {
-        roster.addStudent(studentPtr);
+        classRoster.addStudent(studentPtr);
     }
 
-    roster.printAvgDaysInCourse("A1");
+    return classRoster;
+}
+
+int main() {
+    vector<Student*> students = parseStudentData(studentData);
+    Roster roster = addToRoster(students);
+
+    roster.printByDegreeProgram(SOFTWARE);
 
     return 0;
 }
