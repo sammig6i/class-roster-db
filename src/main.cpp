@@ -64,10 +64,30 @@ Roster addToRoster(const vector<Student*> students) {
 }
 
 int main() {
-    vector<Student*> students = parseStudentData(studentData);
-    Roster roster = addToRoster(students);
+    cout << "Course Title: Scripting and Pogramming - Applications - C867" << endl;
+    cout << "Programming Language: C++" << endl;
+    cout << "Name: Sammi Ghazzawi" << endl;
+    cout << "Student ID: 011669483" << endl
+         << endl;
 
-    roster.printByDegreeProgram(SOFTWARE);
+    vector<Student*> students = parseStudentData(studentData);
+    Roster classRoster = addToRoster(students);
+
+    classRoster.printAll();
+    cout << "\n";
+    classRoster.printInvalidEmails();
+    cout << "\n";
+
+    for (Student* ptr : classRoster.classRosterArray) {
+        classRoster.printAvgDaysInCourse(ptr->getStudentID());
+    }
+    cout << "\n";
+    classRoster.printByDegreeProgram(SOFTWARE);
+    cout << "\n";
+    classRoster.remove("A3");
+    classRoster.printAll();
+    cout << "\n";
+    classRoster.remove("A3");
 
     return 0;
 }

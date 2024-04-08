@@ -34,7 +34,7 @@ void Roster::remove(const std::string& studentID) {
     }
 
     if (!found) {
-        std::cerr << "Student ID " << studentID << "not found." << std::endl;
+        std::cerr << "Student ID " << studentID << " not found." << std::endl;
     }
 }
 
@@ -74,8 +74,9 @@ void Roster::printAvgDaysInCourse(const std::string& studentID) {
                 sum += days[i];
             }
             double avgDaysInCourse = sum / 3.0;
+            double roundedAvg = std::round(avgDaysInCourse * 100) / 100;
 
-            std::cout << "Average days to complete courses for student ID " << studentID << ": " << avgDaysInCourse << std::endl;
+            std::cout << "Average days to complete courses for student ID " << studentID << ": " << roundedAvg << std::endl;
             return;
         }
     }
@@ -128,6 +129,7 @@ void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
     bool found = false;
     for (auto it = classRosterArray.begin(); it != classRosterArray.end(); it++) {
         if ((*it)->getDegreeProgram() == degreeProgram) {
+            std::cout << "Students in " << programString << " program" << std::endl;
             (*it)->print();
             found = true;
         } else {
