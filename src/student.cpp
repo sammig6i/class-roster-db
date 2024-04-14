@@ -1,5 +1,18 @@
 #include "student.h"
 
+// Default Constructor
+Student::Student() {
+    this->studentID = "";
+    this->firstName = "";
+    this->lastName = "";
+    this->emailAddress = "";
+    this->age = 0;
+    this->daysToCompleteCourses[0] = 0;
+    this->daysToCompleteCourses[1] = 0;
+    this->daysToCompleteCourses[2] = 0;
+    this->degreeProgram = NONE;
+}
+
 // Constructor
 Student::Student(std::string studentID, std::string firstName, std::string lastName, std::string emailAddress, int age, std::array<int, 3> daysToCompleteCourses, DegreeProgram degreeProgram) {
     this->studentID = studentID;

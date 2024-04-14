@@ -1,7 +1,15 @@
 #include "roster.h"
 
+#include <algorithm>
+#include <iostream>
+#include <string>
+
 Roster::Roster(int size) {
-    classRosterArray.reserve(size);
+    this->idx = 0;
+    this->size = size;
+    for (int i = 0; i < size; i++) {
+        this->classRosterArray[i] = new Student;
+    }
 }
 
 Roster::~Roster() {
@@ -11,7 +19,12 @@ Roster::~Roster() {
 }
 
 void Roster::addStudent(Student* student) {
-    classRosterArray.push_back(student);
+    for (size_t i = 0; i < classRosterArray.size(); i++) {
+        if (classRosterArray[i] == nullptr) {
+            classRosterArray[i] = student;
+            return;
+        }
+    }
 }
 
 void Roster::add(const std::string& studentID, const std::string& firstName, const std::string& lastName, const std::string& emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeProgram) {
@@ -19,15 +32,79 @@ void Roster::add(const std::string& studentID, const std::string& firstName, con
                                                 daysInCourse2,
                                                 daysInCourse3};
     Student* newStudent = new Student(studentID, firstName, lastName, emailAddress, age, daysToCompleteCourses, degreeProgram);
-    classRosterArray.push_back(newStudent);
+
+    classRosterArray[size] = newStudent;
+}
+
+// parse Student Data table
+void Roster::parseStudentData(std::string studentData) {
+    std::string studentID, firstName, lastName, emailAddress;
+    int age;
+    std::array<int, 3> daysToCompleteCourses;
+
+    if (idx < size) {
+        classRosterArray[idx] = new Student;
+        int pos = 0;
+        std::string delimiter = ",";
+
+        pos = studentData.find(delimiter);
+        studentID = studentData.substr(0, pos);
+        classRosterArray[idx]->setStudentID(studentID);
+
+        int lastPos = pos;
+        pos = studentData.find(delimiter, lastPos + 1);
+        firstName = studentData.substr(lastPos + 1, pos - lastPos - 1);
+        classRosterArray[idx]->setFirstName(firstName);
+
+        lastPos = pos;
+        pos = studentData.find(delimiter, lastPos + 1);
+        lastName = studentData.substr(lastPos + 1, pos - lastPos - 1);
+        classRosterArray[idx]->setLastName(lastName);
+
+        lastPos = pos;
+        pos = studentData.find(delimiter, lastPos + 1);
+        emailAddress = studentData.substr(lastPos + 1, pos - lastPos - 1);
+        classRosterArray[idx]->setEmailAddress(emailAddress);
+
+        lastPos = pos;
+        pos = studentData.find(delimiter, lastPos + 1);
+        age = std::stoi(studentData.substr(lastPos + 1, pos - lastPos - 1));
+        classRosterArray[idx]->setAge(age);
+
+        for (int i = 0; i < 3; i++) {
+            lastPos = pos;
+            pos = studentData.find(delimiter, lastPos + 1);
+            daysToCompleteCourses[i] = std::stoi(studentData.substr(lastPos + 1, pos - lastPos - 1));
+            lastPos = pos;
+        }
+        classRosterArray[idx]->setDaysToCompleteCourses(daysToCompleteCourses);
+
+        lastPos = pos;
+        pos = studentData.find(delimiter, lastPos + 1);
+        std::string degree = studentData.substr(lastPos + 1, pos - lastPos - 1);
+        if (degree == "SECURITY") {
+            classRosterArray[idx]->setDegreeProgram(SECURITY);
+        } else if (degree == "NETWORK") {
+            classRosterArray[idx]->setDegreeProgram(NETWORK);
+        } else if (degree == "SOFTWARE") {
+            classRosterArray[idx]->setDegreeProgram(SOFTWARE);
+        } else {
+            classRosterArray[idx]->setDegreeProgram(NONE);
+        }
+
+        idx++;
+    }
 }
 
 void Roster::remove(const std::string& studentID) {
     bool found = false;
-    for (auto it = classRosterArray.begin(); it != classRosterArray.end(); it++) {
-        if ((*it)->getStudentID() == studentID) {
-            delete *it;
-            classRosterArray.erase(it);
+    for (int i = 0; i < size; i++) {
+        if (classRosterArray[i] == nullptr) {
+            break;
+        }
+        if (classRosterArray[i]->getStudentID() == studentID) {
+            delete classRosterArray[i];
+            classRosterArray[i] = nullptr;
             found = true;
             break;
         }
@@ -35,32 +112,43 @@ void Roster::remove(const std::string& studentID) {
 
     if (!found) {
         std::cerr << "Student ID " << studentID << " not found." << std::endl;
+    } else if (found) {
+        std::cerr << "Student ID " << studentID << " removed." << std::endl;
     }
 }
 
 void Roster::printAll() {
     for (const auto& student : classRosterArray) {
-        std::cout << student->getStudentID()
-                  << "\tFirst Name: " << student->getFirstName()
-                  << "\tLast Name: " << student->getLastName()
-                  << "\tEmail Address: " << student->getEmailAddress()
-                  << "\tAge: " << student->getAge()
-                  << "\nDays To Complete Courses: {" << student->getDaysToCompleteCourses()[0] << ", " << student->getDaysToCompleteCourses()[1] << ", " << student->getDaysToCompleteCourses()[2]
-                  << "}\tDegree Program: ";
-        switch (student->getDegreeProgram()) {
-            case SECURITY:
-                std::cout << "SECURITY";
-                break;
-            case NETWORK:
-                std::cout << "NETWORK";
-                break;
-            case SOFTWARE:
-                std::cout << "SOFTWARE";
-                break;
-            default:
-                std::cout << "None";
+        if (student == nullptr) {
+            continue;
+        } else {
+            printf("Student ID: %s\t", student->getStudentID().c_str());
+            printf("First Name: %s\t", student->getFirstName().c_str());
+            printf("Last Name: %s\t", student->getLastName().c_str());
+            printf("Email Address: %s\t", student->getEmailAddress().c_str());
+            printf("Age: %d\t\n", student->getAge());
+            std::array<int, 3> days = student->getDaysToCompleteCourses();
+            printf("Days to Complete Courses: ");
+            for (size_t i = 0; i < days.size(); i++) {
+                printf("%d ", days[i]);
+            }
+            printf("\tDegree Program: ");
+            switch (student->getDegreeProgram()) {
+                case SECURITY:
+                    printf("SECURITY");
+                    break;
+                case NETWORK:
+                    printf("NETWORK");
+                    break;
+                case SOFTWARE:
+                    printf("SOFTWARE");
+                    break;
+                default:
+                    printf("NONE");
+            }
         }
-        std::cout << std::endl;
+
+        printf("\n\n");
     }
 }
 
@@ -127,11 +215,13 @@ void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
     }
 
     bool found = false;
+    std::cout << "Students in " << programString << " program:"
+              << std::endl;
     for (auto it = classRosterArray.begin(); it != classRosterArray.end(); it++) {
         if ((*it)->getDegreeProgram() == degreeProgram) {
-            std::cout << "Students in " << programString << " program" << std::endl;
             (*it)->print();
             found = true;
+
         } else {
             continue;
         }
