@@ -25,7 +25,7 @@ int main() {
     for (int i = 0; i < 5; i++) {
         classRoster.parseStudentData(studentData[i]);
     }
-ß
+
     classRoster.printAll();
     classRoster.printInvalidEmails();
     printf("\n");
