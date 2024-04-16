@@ -73,31 +73,28 @@ void Student::setDegreeProgram(DegreeProgram degreeProgram) {
 }
 
 void Student::print() {
-    std::cout << "Student ID: " << getStudentID() << std::endl;
-    std::cout << "First Name: " << getFirstName() << std::endl;
-    std::cout << "Last Name: " << getLastName() << std::endl;
-    std::cout << "Email Address: " << getEmailAddress() << std::endl;
-    std::cout << "Age: " << getAge() << std::endl;
-    std::cout << "Days to Complete Courses: {";
-    auto days = getDaysToCompleteCourses();
-    for (const auto& day : days) {
-        std::cout << day << " ";
+    printf("Student ID: %s\t", this->getStudentID().c_str());
+    printf("First Name: %s\t", this->getFirstName().c_str());
+    printf("Last Name: %s\t", this->getLastName().c_str());
+    printf("Email Address: %s\t", this->getEmailAddress().c_str());
+    printf("Age: %d\t\n", this->getAge());
+    std::array<int, 3> days = this->getDaysToCompleteCourses();
+    printf("Days to Complete Courses: ");
+    for (size_t i = 0; i < days.size(); i++) {
+        printf("%d ", days[i]);
     }
-    std::cout << "}" << std::endl;
-    std::cout << "Degree Program: ";
-    switch (getDegreeProgram()) {
+    printf("\tDegree Program: ");
+    switch (this->getDegreeProgram()) {
         case SECURITY:
-            std::cout << "SECURITY";
+            printf("SECURITY");
             break;
         case NETWORK:
-            std::cout << "NETWORK";
+            printf("NETWORK");
             break;
         case SOFTWARE:
-            std::cout << "SOFTWARE";
+            printf("SOFTWARE");
             break;
         default:
-            std::cout << "NONE";
-            break;
+            printf("NONE");
     }
-    std::cout << std::endl;
 }

@@ -122,32 +122,8 @@ void Roster::printAll() {
         if (student == nullptr) {
             continue;
         } else {
-            printf("Student ID: %s\t", student->getStudentID().c_str());
-            printf("First Name: %s\t", student->getFirstName().c_str());
-            printf("Last Name: %s\t", student->getLastName().c_str());
-            printf("Email Address: %s\t", student->getEmailAddress().c_str());
-            printf("Age: %d\t\n", student->getAge());
-            std::array<int, 3> days = student->getDaysToCompleteCourses();
-            printf("Days to Complete Courses: ");
-            for (size_t i = 0; i < days.size(); i++) {
-                printf("%d ", days[i]);
-            }
-            printf("\tDegree Program: ");
-            switch (student->getDegreeProgram()) {
-                case SECURITY:
-                    printf("SECURITY");
-                    break;
-                case NETWORK:
-                    printf("NETWORK");
-                    break;
-                case SOFTWARE:
-                    printf("SOFTWARE");
-                    break;
-                default:
-                    printf("NONE");
-            }
+            student->print();
         }
-
         printf("\n\n");
     }
 }

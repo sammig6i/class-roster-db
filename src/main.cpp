@@ -25,7 +25,7 @@ int main() {
     for (int i = 0; i < 5; i++) {
         classRoster.parseStudentData(studentData[i]);
     }
-
+ß
     classRoster.printAll();
     classRoster.printInvalidEmails();
     printf("\n");
@@ -36,11 +36,11 @@ int main() {
 
     printf("\n");
     classRoster.printByDegreeProgram(SOFTWARE);
+    printf("\n");
 
     classRoster.remove("A3");
     printf("\n");
     classRoster.printAll();
-    printf("\n");
     classRoster.remove("A3");
 
     classRoster.~Roster();
