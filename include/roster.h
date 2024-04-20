@@ -1,5 +1,6 @@
 #ifndef ROSTER_H
 #define ROSTER_H
+#include <array>
 #include <string>
 
 #include "student.h"

@@ -1,6 +1,7 @@
 #ifndef STUDENT_H
 #define STUDENT_H
 
+#include <array>
 #include <iostream>
 #include <string>
 
