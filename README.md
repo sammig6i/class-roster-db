@@ -41,7 +41,6 @@
     <a href="https://github.com/sammig6i/class-roster-db"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/sammig6i/class-roster-db">View Demo</a>
     ·
     <a href="https://github.com/sammig6i/class-roster-db/issues">Report Bug</a>
     ·
@@ -79,7 +78,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]]("/Users/samghazzawi/Desktop/class-roster-db/images/Screenshot 2024-04-20 at 2.22.02 PM.png")
 
 Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
 
