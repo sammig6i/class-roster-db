@@ -30,13 +30,13 @@
 <br />
 <div align="center">
   <a href="https://github.com/sammig6i/class-roster-db">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/4315005.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Database for Class Roster</h3>
 
   <p align="center">
-    An implementation of the class roster database for WGU C++ class.
+    An implementation of the class roster database for WGU C++ class. This is a simple program that can function as a database to store students in a class roster wth attributes like, ID, First and Last Name, Degree Program, and Ages.
     <br />
     <a href="https://github.com/sammig6i/class-roster-db"><strong>Explore the docs »</strong></a>
     <br />
