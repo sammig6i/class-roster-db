@@ -97,13 +97,12 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 These are steps for setting up the project locally.
 
 ### Prerequisites
-* install g++ GNU compiler
-  - install brew then run
+
+- install g++ GNU compiler
+  - install ![https://brew.sh/]homebrew then run
   ```sh
   brew install gcc
   ```
-
-
 
 todo
 
