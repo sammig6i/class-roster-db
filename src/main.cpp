@@ -15,6 +15,7 @@ const string studentData[] =
      "A5,Sammi,Ghazzawi,sghazza@wgu.edu,26,10,45,50,NETWORK"};
 
 int main() {
+    // Per makefile, this program is using c++11
     cout << "Course Title: Scripting and Pogramming - Applications - C867" << endl;
     cout << "Programming Language: C++" << endl;
     cout << "Name: Sammi Ghazzawi" << endl;
