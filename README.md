@@ -99,7 +99,7 @@ These are steps for setting up the project locally.
 ### Prerequisites
 
 - install g++ GNU compiler
-  - install ![https://brew.sh/]homebrew then run
+  - install ![https://brew.sh/](homebrew) then run
   ```sh
   brew install gcc
   ```
