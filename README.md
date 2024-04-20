@@ -86,7 +86,7 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ### Built With
 
-- [![Next][Next.js]][Next-url]
+- [![C++][C++]]
 - [![React][React.js]][React-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -187,6 +187,7 @@ Project Link: [https://github.com/sammig6i/class-roster-db](https://github.com/s
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/sammighazzawi
 [product-screenshot]: images/Screenshot.png
+[C++]: https://img.shields.io/badge/C%2B%2B-000000?style=for-the-badge&logo=c%2B%2B
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
