@@ -87,7 +87,6 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 ### Built With
 
 - ![C++][C++]
-- [![React][React.js]][React-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -95,12 +94,16 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+These are steps for setting up the project locally.
 
 ### Prerequisites
+* install g++ GNU compiler
+  - install brew then run
+  ```sh
+  brew install gcc
+  ```
 
-This is an example of how to list things you need to use the software and how to install them.
+
 
 todo
 
