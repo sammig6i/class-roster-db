@@ -78,7 +78,7 @@
 
 ## About The Project
 
-![Product Name Screen Shot]("images/Screenshot_2024-04-20_at_2.22.02_PM.png")
+[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
 
@@ -186,7 +186,7 @@ Project Link: [https://github.com/sammig6i/class-roster-db](https://github.com/s
 [license-url]: https://github.com/sammig6i/class-roster-db/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/sammighazzawi
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: images/Screenshot.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
