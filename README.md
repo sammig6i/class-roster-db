@@ -86,7 +86,7 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ### Built With
 
-- ![C++][C++]
+- ![C++][C++] - version 11
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -99,16 +99,24 @@ These are steps for setting up the project locally.
 ### Prerequisites
 
 - install g++ GNU compiler
-  - install ![https://brew.sh/](homebrew) then run
+  - install [Homebrew](https://brew.sh/) then run
   ```sh
   brew install gcc
   ```
 
-todo
-
 ### Installation
 
-todo
+- Build project
+
+```sh
+make
+```
+
+- To clean up object files
+
+```sh
+make clean
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
