@@ -4,6 +4,7 @@
 #include <array>
 #include <iostream>
 #include <string>
+using namespace std;
 
 #include "degree.h"
 
@@ -22,7 +23,7 @@ class Student {
     Student();
 
     // Constructor
-    Student(std::string studentID, std::string firstName, std::string lastName, std::string emailAddress, int age, std::array<int, 3> daysToCompleteCourses, DegreeProgram degreeProgram);
+    Student(string studentID, string firstName, string lastName, string emailAddress, int age, int daysToCompleteCourses[], DegreeProgram degreeProgram);
 
     // getter functions for each variable
     std::string getStudentID() const;

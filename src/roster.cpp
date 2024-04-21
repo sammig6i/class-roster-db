@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <iostream>
 #include <string>
+using namespace std;
 
 Roster::Roster(int size) {
     this->idx = 0;
@@ -18,22 +19,10 @@ Roster::~Roster() {
     }
 }
 
-void Roster::addStudent(Student* student) {
-    for (size_t i = 0; i < classRosterArray.size(); i++) {
-        if (classRosterArray[i] == nullptr) {
-            classRosterArray[i] = student;
-            return;
-        }
-    }
-}
-
-void Roster::add(const std::string& studentID, const std::string& firstName, const std::string& lastName, const std::string& emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeProgram) {
-    std::array<int, 3> daysToCompleteCourses = {daysInCourse1,
-                                                daysInCourse2,
-                                                daysInCourse3};
-    Student* newStudent = new Student(studentID, firstName, lastName, emailAddress, age, daysToCompleteCourses, degreeProgram);
-
-    classRosterArray[size] = newStudent;
+void Roster::add(string studentID, string firstName, string lastName, string email, int age,
+                 int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeProgram) {
+    int daysInCourse[3] = {daysInCourse1, daysInCourse2, daysInCourse3};
+    classRosterArray[size] = new Student(studentID, firstName, lastName, email, age, daysInCourse, degreeProgram);
 }
 
 // parse Student Data table
@@ -129,7 +118,7 @@ void Roster::printAll() {
 }
 
 void Roster::printAvgDaysInCourse(const std::string& studentID) {
-    for (auto it = classRosterArray.begin(); it != classRosterArray.end(); it++) {
+    for (auto it = std::begin(classRosterArray); it != std::end(classRosterArray); it++) {
         if ((*it)->getStudentID() == studentID) {
             std::array<int, 3> days = (*it)->getDaysToCompleteCourses();
 
@@ -147,7 +136,7 @@ void Roster::printAvgDaysInCourse(const std::string& studentID) {
     std::cerr << "Student ID " << studentID << " not found." << std::endl;
 }
 void Roster::printInvalidEmails() {
-    for (auto it = classRosterArray.begin(); it != classRosterArray.end(); it++) {
+    for (auto it = std::begin(classRosterArray); it != std::end(classRosterArray); it++) {
         std::string email = (*it)->getEmailAddress();
         if (email.empty()) {
             std::cout << "Student ID " << (*it)->getStudentID() << "does not have an email." << std::endl;
@@ -193,7 +182,7 @@ void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
     bool found = false;
     std::cout << "Students in " << programString << " program:"
               << std::endl;
-    for (auto it = classRosterArray.begin(); it != classRosterArray.end(); it++) {
+    for (auto it = std::begin(classRosterArray); it != std::end(classRosterArray); it++) {
         if ((*it)->getDegreeProgram() == degreeProgram) {
             (*it)->print();
             found = true;

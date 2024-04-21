@@ -14,13 +14,15 @@ Student::Student() {
 }
 
 // Constructor
-Student::Student(std::string studentID, std::string firstName, std::string lastName, std::string emailAddress, int age, std::array<int, 3> daysToCompleteCourses, DegreeProgram degreeProgram) {
+Student::Student(string studentID, string firstName, string lastName, string emailAddress, int age, int daysToCompleteCourses[], DegreeProgram degreeProgram) {
     this->studentID = studentID;
     this->firstName = firstName;
     this->lastName = lastName;
     this->emailAddress = emailAddress;
     this->age = age;
-    this->daysToCompleteCourses = daysToCompleteCourses;
+    this->daysToCompleteCourses[0] = daysToCompleteCourses[0];
+    this->daysToCompleteCourses[1] = daysToCompleteCourses[1];
+    this->daysToCompleteCourses[2] = daysToCompleteCourses[2];
     this->degreeProgram = degreeProgram;
 }
 
